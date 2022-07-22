@@ -1,3 +1,22 @@
 .App {
   margin: 50px;
 }
+
+.error {
+  border: red 1px solid;
+}
+
+.errorMessage {
+  display: block;
+  color:red;
+}
+
+
+.active-filter {
+  background-color: aquamarine;
+}
+
+.completed-task {
+  color: gray;
+  text-decoration: line-through;
+}
