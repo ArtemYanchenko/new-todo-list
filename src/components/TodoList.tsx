@@ -18,6 +18,12 @@ export type TodolistType = {
     filter:FilterType
 }
 
+export type TodolistsType = {
+    id:string,
+    title:string
+    filter:FilterType
+}
+
 
 export const TodoList = (props: TodolistType) => {
 
