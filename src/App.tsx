@@ -23,21 +23,19 @@ function App() {
     }
 
 
-    const addTask = (newTitle:string) => {
-        let newTask = {id:v1(),title:newTitle,isDone:false}
-        setTasks([newTask,...tasks])
+    const addTask = (newTitle: string) => {
+        let newTask = {id: v1(), title: newTitle, isDone: false}
+        setTasks([newTask, ...tasks])
     }
 
     let tasksForTodolist = tasks;
 
-    if (filter === "active") {
+    if (filter === 'active') {
         tasksForTodolist = tasks.filter(t => t.isDone === false);
     }
-    if (filter === "completed") {
+    if (filter === 'completed') {
         tasksForTodolist = tasks.filter(t => t.isDone === true);
     }
-
-
 
 
     return (

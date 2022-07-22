@@ -25,14 +25,33 @@ export const TodoList = (props: TodolistType) => {
         setNewTitle(e.currentTarget.value)
     }
 
+    const onKeyPressHandler = ( e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            addTask()
+        }
+    }
+    const addTask = () => {
+        newTitle && props.addTask(newTitle)
+        setNewTitle('')
+    }
+
+   const onAllClickHandler = () => {
+        props.changeFilter('all')
+    }
+
+    const onActiveClickHandler = () => {
+        props.changeFilter('active')
+    }
+
+    const onCompletedClickHandler = () => {
+        props.changeFilter('completed')
+    }
     return (
         <div>
             <h3>{props.title}</h3>
             <div>
-                <input onChange={onChangeHandler}/>
-                <button onClick={() => {
-                    props.addTask(newTitle);
-                }}>+
+                <input value={newTitle} onChange={onChangeHandler} onKeyUp={onKeyPressHandler}/>
+                <button onClick={addTask}>+
                 </button>
             </div>
             <ul>
@@ -50,17 +69,11 @@ export const TodoList = (props: TodolistType) => {
 
             </ul>
             <div>
-                <button onClick={() => {
-                    props.changeFilter('all')
-                }}>All
+                <button onClick={onAllClickHandler}>All
                 </button>
-                <button onClick={() => {
-                    props.changeFilter('active')
-                }}>Active
+                <button onClick={onActiveClickHandler}>Active
                 </button>
-                <button onClick={() => {
-                    props.changeFilter('completed')
-                }}>Completed
+                <button onClick={onCompletedClickHandler}>Completed
                 </button>
             </div>
         </div>
