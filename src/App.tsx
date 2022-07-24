@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import TodoList, {FilterType, TaskStateType, TodolistsType} from './components/TodoList';
 import {v1} from 'uuid';
+import AddItemForm from './components/AddItemForm';
 
 function App() {
 
@@ -65,6 +66,8 @@ function App() {
         setTasks({...tasks});
     }
     return (
+        <>
+
         <div className="App">
             {todolists.map(t => {
                 let allTodolistTasks = tasks[t.id]
@@ -88,8 +91,8 @@ function App() {
                     removeTodolist={removeTodolist}
                     filter={t.filter}/>
             })}
-
         </div>
+        </>
     );
 }
 

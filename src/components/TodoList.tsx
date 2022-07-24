@@ -1,5 +1,6 @@
 import React, {ChangeEvent, useState} from 'react';
 import {debug} from 'util';
+import AddItemForm from './AddItemForm';
 
 export type FilterType = 'all' | 'active' | 'completed'
 
@@ -43,13 +44,13 @@ export const TodoList = (props: TodolistType) => {
         setNewTitle(e.currentTarget.value)
         setError(null)
     }
-
-    const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            addTask()
-        }
-    }
-    const addTask = () => {
+    //
+    // const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    //     if (e.key === 'Enter') {
+    //         addTask()
+    //     }
+    // }
+    const addTask = (newTitle:string) => {
         if (newTitle.trim()) {
             props.addTask(props.todolistID, newTitle.trim())
         } else {
@@ -75,17 +76,19 @@ export const TodoList = (props: TodolistType) => {
     }
     return (
         <div>
+
             <h3 style={{display:'inline'}}>{props.title}</h3>
             <button onClick={removeTodolistHandler}>X</button>
-            <div>
-                <input value={newTitle}
-                       onChange={onChangeHandler}
-                       onKeyUp={onKeyPressHandler}
-                       className={error ? 'error' : ''}/>
-                <button onClick={addTask}>+
-                </button>
-                {error && <span className={'errorMessage'}>{error}</span>}
-            </div>
+            {/*<div>*/}
+            {/*    <input value={newTitle}*/}
+            {/*           onChange={onChangeHandler}*/}
+            {/*           onKeyUp={onKeyPressHandler}*/}
+            {/*           className={error ? 'error' : ''}/>*/}
+            {/*    <button onClick={addTask}>+*/}
+            {/*    </button>*/}
+            {/*    {error && <span className={'errorMessage'}>{error}</span>}*/}
+            {/*</div>*/}
+            <AddItemForm addItem={addTask}/>
             <ul>
 
                 {props.tasks.map(t => {
