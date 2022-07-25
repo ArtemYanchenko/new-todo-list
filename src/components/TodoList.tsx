@@ -1,5 +1,4 @@
 import React, {ChangeEvent, useState} from 'react';
-import {debug} from 'util';
 import AddItemForm from './AddItemForm';
 
 export type FilterType = 'all' | 'active' | 'completed'
@@ -40,10 +39,10 @@ export const TodoList = (props: TodolistType) => {
     let [error, setError] = useState<string | null>(null)
 
 
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setNewTitle(e.currentTarget.value)
-        setError(null)
-    }
+    // const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    //     setNewTitle(e.currentTarget.value)
+    //     setError(null)
+    // }
     //
     // const onKeyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
     //     if (e.key === 'Enter') {
