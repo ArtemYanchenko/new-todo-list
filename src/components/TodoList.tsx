@@ -16,7 +16,7 @@ export type TaskStateType = {
 export type TodolistType = {
     todolistID: string
     title: string
-    tasks: TaskType[]
+    // tasks: TaskType[] //здесь ошибка - иду на супорт
     removeTask: (todolistID: string, id: string) => void
     changeFilter: (value: FilterType, todolistID: string) => void
     addTask: (todolistID: string, newTitle: string) => void
@@ -90,7 +90,7 @@ export const TodoList = (props: TodolistType) => {
             <AddItemForm addItem={addTask}/>
             <ul>
 
-                {props.tasks.map(t => {
+                {props.tasks.map(t => {  // ошибка также - на супорт
                     const onClickHandler = () => {
                         props.removeTask(props.todolistID, t.id)
                     }
